@@ -1,0 +1,95 @@
+using System;
+using System.Collections.Generic;
+public class Engine
+{
+    public int Power { get; set; }
+    public Engine(int power)
+    {
+        Power = power;
+    }
+    public override string ToString()
+    {
+        return $"Engine Power: {Power} HP";
+    }
+}
+public class Wing
+{
+    public double Span { get; set; }
+    public Wing(double span)
+    {
+        Span = span;
+    }
+    public override string ToString()
+    {
+        return $"Wing Span: {Span} meters";
+    }
+}
+public class Chassis
+{
+    public string Material { get; set; }
+    public Chassis(string material)
+    {
+        Material = material;
+    }
+    public override string ToString()
+    {
+        return $"Chassis Material: {Material}";
+    }
+}
+public class Airplane
+{
+    public Engine Engine { get; set; }
+    public Wing Wing { get; set; }
+    public Chassis Chassis { get; set; }
+    public List<string> Route { get; set; } = new List<string>();
+    public Airplane(Engine engine, Wing wing, Chassis chassis)
+    {
+        Engine = engine;
+        Wing = wing;
+        Chassis = chassis;
+    }
+    // Метод для польоту
+    public void Fly()
+    {
+        Console.WriteLine("The airplane is flying.");
+    }
+    // Метод для встановлення маршруту
+    public void SetRoute(List<string> route)
+    {
+        Route = route;
+        Console.WriteLine("Route set.");
+    }
+    // Метод для виведення маршруту
+    public void DisplayRoute()
+    {
+        Console.WriteLine("Route:");
+        foreach (var point in Route)
+        {
+            Console.WriteLine(point);
+        }
+    }
+    public override string ToString()
+    {
+        return $"{Engine}, {Wing}, {Chassis}";
+    }
+}
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        // Створення об'єктів класів Крило, Шасі, Двигун
+        Engine engine = new Engine(1500);
+        Wing wing = new Wing(25.5);
+        Chassis chassis = new Chassis("Aluminum");
+        // Створення об'єкта Літак
+        Airplane airplane = new Airplane(engine, wing, chassis);
+        // Встановлення маршруту
+        airplane.SetRoute(new List<string> { "Kyiv", "Lviv", "Odessa" });
+        // Виведення інформації про літак
+        Console.WriteLine(airplane);
+        // Виведення маршруту
+        airplane.DisplayRoute();
+        // Політ
+        airplane.Fly();
+    }
+}
