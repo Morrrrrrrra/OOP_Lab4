@@ -1,11 +1,10 @@
 using System;
 public abstract class TBody
 {
-    // Абстрактні методи для обчислення площі поверхні та об'єму
-    public abstract double SurfaceArea();
+    public abstract double SurfaceArea();  // Абстрактні методи для обчислення площі поверхні та об'єму
     public abstract double Volume();
-    // Метод для виведення даних про геометричне тіло
-    public void DisplayInfo()
+    public void DisplayInfo()    // Метод для виведення даних про геометричну фігуру
+
     {
         Console.WriteLine($"Surface Area: {SurfaceArea():F2}, Volume: {Volume():F2}");
     }
@@ -21,13 +20,11 @@ public class TParallelepiped : TBody
         Width = width;
         Height = height;
     }
-    // Перевизначення методу для обчислення площі поверхні прямокутного паралелепіпеда
-    public override double SurfaceArea()
+    public override double SurfaceArea()    // Перевизначення методу для обчислення площі поверхні прямокутного паралелепіпеда
     {
         return 2 * (Length * Width + Width * Height + Height * Length);
     }
-    // Перевизначення методу для обчислення об'єму прямокутного паралелепіпеда
-    public override double Volume()
+    public override double Volume()   // Перевизначення методу для обчислення об'єму прямокутного паралелепіпеда
     {
         return Length * Width * Height;
     }
@@ -39,13 +36,11 @@ public class TBall : TBody
     {
         Radius = radius;
     }
-    // Перевизначення методу для обчислення площі поверхні кулі
-    public override double SurfaceArea()
+    public override double SurfaceArea()    // Перевизначення методу для обчислення площі поверхні кулі
     {
         return 4 * Math.PI * Radius * Radius;
     }
-    // Перевизначення методу для обчислення об'єму кулі
-    public override double Volume()
+    public override double Volume()    // Перевизначення методу для обчислення об'єму кулі
     {
         return (4 / 3.0) * Math.PI * Math.Pow(Radius, 3);
     }
@@ -57,13 +52,10 @@ public class Program
         Random random = new Random();
         int n = 10; // Загальна кількість тіл
         TBody[] bodies = new TBody[n]; // Масив для збереження геометричних тіл
-
-        // Створення випадкових паралелепіпедів та куль
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++)    // Створення випадкових паралелепіпедів та куль
         {
             if (random.Next(2) == 0)
-            {
-                // Створення випадкового паралелепіпеда
+            {      // Створення випадкового паралелепіпеда
                 double length = random.Next(1, 10);
                 double width = random.Next(1, 10);
                 double height = random.Next(1, 10);
@@ -76,17 +68,13 @@ public class Program
                 bodies[i] = new TBall(radius);
             }
         }
-        // Обчислення сумарної площі поверхні всіх геометричних тіл
-        double totalSurfaceArea = 0;
+        double totalSurfaceArea = 0;        // Обчислення сумарної площі поверхні всіх геометричних фігур
         foreach (var body in bodies)
         {
             totalSurfaceArea += body.SurfaceArea();
         }
-        // Виведення результату
-        Console.WriteLine($"Total Surface Area of all bodies: {totalSurfaceArea:F2}");
-
-        // Виведення даних для кожного тіла
-        for (int i = 0; i < n; i++)
+        Console.WriteLine($"Total Surface Area of all bodies: {totalSurfaceArea:F2}");   // Виведення результату
+        for (int i = 0; i < n; i++)        // Виведення даних для кожного тіла
         {
             Console.WriteLine($"Body {i + 1}:");
             bodies[i].DisplayInfo();
