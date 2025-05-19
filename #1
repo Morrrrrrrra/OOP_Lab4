@@ -48,19 +48,16 @@ public class Airplane
         Wing = wing;
         Chassis = chassis;
     }
-    // Метод для польоту
-    public void Fly()
+    public void Fly()         // Метод для польоту
     {
         Console.WriteLine("The airplane is flying.");
     }
-    // Метод для встановлення маршруту
-    public void SetRoute(List<string> route)
+    public void SetRoute(List<string> route)    // Метод для встановлення маршруту
     {
         Route = route;
         Console.WriteLine("Route set.");
     }
-    // Метод для виведення маршруту
-    public void DisplayRoute()
+    public void DisplayRoute()    // Метод для виведення маршруту
     {
         Console.WriteLine("Route:");
         foreach (var point in Route)
@@ -77,19 +74,14 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        // Створення об'єктів класів Крило, Шасі, Двигун
-        Engine engine = new Engine(1500);
+        Engine engine = new Engine(1500);        // Створення об'єктів класів крило, шасі, двигун
+
         Wing wing = new Wing(25.5);
         Chassis chassis = new Chassis("Aluminum");
-        // Створення об'єкта Літак
-        Airplane airplane = new Airplane(engine, wing, chassis);
-        // Встановлення маршруту
-        airplane.SetRoute(new List<string> { "Kyiv", "Lviv", "Odessa" });
-        // Виведення інформації про літак
-        Console.WriteLine(airplane);
-        // Виведення маршруту
-        airplane.DisplayRoute();
-        // Політ
-        airplane.Fly();
+        Airplane airplane = new Airplane(engine, wing, chassis);     // Створення об'єкта літак
+        airplane.SetRoute(new List<string> { "Kyiv", "Lviv", "Odessa" });      // Встановлення маршруту
+        Console.WriteLine(airplane);        // Виведення інформації про літак
+        airplane.DisplayRoute();        // Виведення маршруту
+        airplane.Fly();             // Політ
     }
 }
